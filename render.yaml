@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: edi-bot
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: npm start
+    disk:
+      name: edi-bot-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: BOT_NAME
+        value: EDI BOT
+      - key: PREFIX
+        value: .
+      - key: AUTH_DIR
+        value: /var/data/auth
+      - key: DATA_DIR
+        value: /var/data/data
+      - key: PAIRING_SECRET
+        generateValue: true
